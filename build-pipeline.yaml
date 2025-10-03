@@ -34,13 +34,13 @@ steps:
  # Update deployment file
  - script: |
     cd argocd-config/
-    git config --global user.email "mkrieken@gmail.com"
-    git config --global user.name "Martin van Krieken"
+    git config --global user.name "${GIT_AUTHOR_NAME}"
+    git config --global user.email "${GIT_AUTHOR_EMAIL}"
     git fetch
     git branch -v -a
-    git switch main --no-guess
+    git checkout -b feature/update
     git branch -v -a
     yq eval -i '.spec.template.spec.containers[].image = "local/az-local-agent:$(GIT_SHORT_ID)"' azure-build-agent/deployment.yaml
     git add .
     git commit -m "New version for azure-build-agent/deployment.yaml"
-    git push origin main
+    git push origin feature/update
