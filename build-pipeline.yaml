@@ -19,13 +19,8 @@ workspace:
 
 steps:
  - checkout: self
-   path: work
-
  - bash: 
     echo "##vso[task.setvariable variable=GIT_SHORT_ID]$(echo $(Build.SourceVersion) | cut -c1-7)"
-
- - script: dir $(Build.SourcesDirectory)   
-    
  - task: Docker@2
    displayName: Build agent image
    inputs:
@@ -35,7 +30,7 @@ steps:
      buildContext: work/image
      tags: $(GIT_SHORT_ID)
      arguments: '--platform linux/x86_64'
-
+ # Checkout config Repo
  - checkout: configRepo
    path: configRepo
        
