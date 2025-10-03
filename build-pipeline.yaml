@@ -26,7 +26,7 @@ steps:
    inputs:
      repository: 'local/az-local-agent'
      command: build
-     Dockerfile: work/image/azure-agent.dockerfile
+     Dockerfile: image/azure-agent.dockerfile
      buildContext: work/image
      tags: $(GIT_SHORT_ID)
      arguments: '--platform linux/x86_64'
