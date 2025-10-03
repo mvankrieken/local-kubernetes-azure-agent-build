@@ -1,6 +1,14 @@
 trigger: 
 - main
 
+resources:
+  repositories:
+    - repository: configRepo
+      type: github
+      ref: main
+      endpoint: mvankrieken
+      name: mvankrieken/argocd-config
+
 pool: 
   name: Local-kubernetes
   demands: 
@@ -22,3 +30,7 @@ steps:
      buildContext: image
      tags: $(GIT_SHORT_ID)
      arguments: '--platform linux/x86_64'
+
+ - checkout: configRepo
+   path: configRepo
+       
