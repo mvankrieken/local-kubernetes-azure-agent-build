@@ -19,4 +19,4 @@ steps:
      command: build
      Dockerfile: image/azure-agent.dockerfile
      buildContext: image
-     tags: $$(Build.BuildId)
+     tags: $(Build.BuildId)
