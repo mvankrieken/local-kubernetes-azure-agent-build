@@ -29,13 +29,15 @@ steps:
  - checkout: configRepo
    clean: true
    persistCredentials: true
+   sparseCheckoutDirectories: azure-build-agent
 
  # Update deployment file
  - script: |
-    yq eval -i '.spec.template.spec.containers[].image = "local/az-local-agent:$(GIT_SHORT_ID)"' argocd-config/azure-build-agent/deployment.yaml
-    cd argocd-config/
     git config --global user.email "mkrieken@gmail.com"
     git config --global user.name "Martin van Krieken"
+    git checkout main
+    yq eval -i '.spec.template.spec.containers[].image = "local/az-local-agent:$(GIT_SHORT_ID)"' argocd-config/azure-build-agent/deployment.yaml
+    cd argocd-config/
     git add .
     git commit -m "New version for azure-build-agent/deployment.yaml"
-    git push
+    git push origin main
