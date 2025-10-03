@@ -7,6 +7,9 @@ pool:
     - DEF_TYPE -equals build
 
 steps:
+ - bash: |
+    ls -l /var/run/docker.sock
+
  - task: Docker@2
    displayName: Build agent image
    inputs:
