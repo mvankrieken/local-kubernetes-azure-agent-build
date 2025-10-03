@@ -18,6 +18,9 @@ workspace:
   clean: all 
 
 steps:
+ - checkout: self
+   path: work
+
  - bash: 
     echo "##vso[task.setvariable variable=GIT_SHORT_ID]$(echo $(Build.SourceVersion) | cut -c1-7)"
     
@@ -26,8 +29,8 @@ steps:
    inputs:
      repository: 'local/az-local-agent'
      command: build
-     Dockerfile: image/azure-agent.dockerfile
-     buildContext: image
+     Dockerfile: work/image/azure-agent.dockerfile
+     buildContext: work/image
      tags: $(GIT_SHORT_ID)
      arguments: '--platform linux/x86_64'
 
