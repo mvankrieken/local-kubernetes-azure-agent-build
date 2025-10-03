@@ -15,7 +15,8 @@ steps:
  - task: Docker@2
    displayName: Build agent image
    inputs:
-     repository: 'local/az-local-agent:$(Build.SourceVersion)'
+     repository: 'local/az-local-agent'
      command: build
      Dockerfile: image/azure-agent.dockerfile
      buildContext: image
+     tags: $$(Build.BuildId)
