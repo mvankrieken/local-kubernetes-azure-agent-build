@@ -27,8 +27,12 @@ steps:
 
  # Checkout config
  - checkout: configRepo
+   persistCredentials: true
 
  # Update deployment file
  - script: |
     yq eval -i '.spec.template.spec.containers[].image = "local/az-local-agent:$(GIT_SHORT_ID)"' argocd-config/azure-build-agent/deployment.yaml
-    cat argocd-config/azure-build-agent/deployment.yaml
+    cd argocd-config/
+    git add .
+    git commit -m "New version for azure-build-agent/deployment.yaml"
+    git push
