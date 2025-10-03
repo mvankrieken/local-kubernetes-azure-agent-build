@@ -6,6 +6,8 @@ pool:
   demands: 
     - DEF_TYPE -equals build
 
+workspace:
+  clean: all 
 
 steps:
  - bash: 
