@@ -37,9 +37,9 @@ steps:
     git config --global user.email "mkrieken@gmail.com"
     git fetch
     git branch -v -a
-    git checkout -b feature/update
+    git checkout -b main
     git branch -v -a
     yq eval -i '.spec.template.spec.containers[].image = "local/az-local-agent:$(GIT_SHORT_ID)"' azure-build-agent/deployment.yaml
     git add .
     git commit -m "New version for azure-build-agent/deployment.yaml"
-    git push origin feature/update
+    git push origin main
