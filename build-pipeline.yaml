@@ -29,5 +29,4 @@ steps:
  - checkout: configRepo
 
  # Update deployment file
- #- bash: yq -i '.spec.template.spec.containers[].image = "local/az-local-agent:$(GIT_SHORT_ID)"' deployment.yaml
- - bash: yq --help
+ - bash: yq -i '.spec.template.spec.containers[].image = "local/az-local-agent:$(GIT_SHORT_ID)"' argocd-config/azure-build-agent/deployment.yaml
