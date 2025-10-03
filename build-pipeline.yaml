@@ -6,6 +6,9 @@ pool:
   demands: 
     - DEF_TYPE -equals build
 
+variables:
+  GitHash: ${BUILD_SOURCEVERSION:0:8}
+
 steps:
 
  - task: Docker@2
@@ -15,5 +18,5 @@ steps:
      command: build
      Dockerfile: image/azure-agent.dockerfile
      buildContext: image
-     tags: $(Build.BuildId)
+     tags: $(GitHash)
      arguments: '--platform linux/x86_64'
