@@ -18,5 +18,5 @@ steps:
      command: build
      Dockerfile: image/azure-agent.dockerfile
      buildContext: image
-     tags: "${github_sha_hash:0:7}"
+     tags: ${GIT_SHORT_ID}
      arguments: '--platform linux/x86_64'
