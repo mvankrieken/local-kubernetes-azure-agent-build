@@ -1,0 +1,29 @@
+trigger: none
+
+parameters:
+  - name: customer
+    displayName: Customer
+    type: string
+    values:
+      - koen
+
+stages:
+- stage: Deploy
+  jobs:
+  - deployment: helloWorld
+    displayName: 'Agent Setup'
+    environment: 
+      name: 'local-kubernetes-dev'
+    pool: 
+      name: Local-kubernetes
+      demands: 
+        - DEF_TYPE -equals deploy
+        - DEF_CUSTOMER_NAME -equals ${{ parameters.customer }}
+    strategy:
+        runOnce:
+          deploy:
+            steps:
+              - script: echo This runs in the default shell on any machine
+              - bash: |
+                  echo This multiline script always runs in Bash.
+                  echo Even on Windows machines!
