@@ -6,10 +6,10 @@ pool:
   demands: 
     - DEF_TYPE -equals build
 
-variables:
-  GitHash: $(BUILD_SOURCEVERSION:0:8)
 
 steps:
+ - bash: |
+    export GIT_SHORT_ID=$(echo $(Build.SourceVersion) | cut -c1-7 ) 
 
  - task: Docker@2
    displayName: Build agent image
@@ -18,5 +18,5 @@ steps:
      command: build
      Dockerfile: image/azure-agent.dockerfile
      buildContext: image
-     tags: $(GitHash)
+     tags: $(GIT_SHORT_ID)
      arguments: '--platform linux/x86_64'
