@@ -29,6 +29,6 @@ steps:
  - checkout: configRepo
 
  # Update deployment file
- - bash:
+ - script: |
     cat argocd-config/azure-build-agent/deployment.yaml
     yq '.spec.template.spec.containers[].image' argocd-config/azure-build-agent/deployment.yaml
