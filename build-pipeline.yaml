@@ -7,8 +7,12 @@ pool:
     - DEF_TYPE -equals build
 
 steps:
+ - task: DockerInstaller@0
+   displayName: Install docker cli
+   inputs:
+    dockerVersion: '17.09.0-ce'
  - task: Docker@2
-   displayName: Build an image
+   displayName: Build agent image
    inputs:
      repository: 'local/az-local-agent:${Build.SourceVersion}'
      command: build
