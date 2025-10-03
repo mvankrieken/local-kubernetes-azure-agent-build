@@ -21,7 +21,10 @@ steps:
  - checkout: self
    path: workspace
  - bash: "pwd"
-   name: "Listdir"
+   name: "CurrentDir"
+ - bash: "ls -al"
+   name: "ListDir"
+   
      
  - bash: 
     echo "##vso[task.setvariable variable=GIT_SHORT_ID]$(echo $(Build.SourceVersion) | cut -c1-7)"
@@ -30,8 +33,8 @@ steps:
    inputs:
      repository: 'local/az-local-agent'
      command: build
-     Dockerfile: workspace/image/azure-agent.dockerfile
-     buildContext: workspace/work/image
+     Dockerfile: /workspace/image/azure-agent.dockerfile
+     buildContext: /workspace/work/image
      tags: $(GIT_SHORT_ID)
      arguments: '--platform linux/x86_64'
  # Checkout config Repo
