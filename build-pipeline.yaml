@@ -29,7 +29,6 @@ steps:
  - checkout: configRepo
    clean: true
    persistCredentials: true
-   sparseCheckoutDirectories: azure-build-agent
 
  # Update deployment file
  - script: |
