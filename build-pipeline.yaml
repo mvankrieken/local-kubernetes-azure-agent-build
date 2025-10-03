@@ -34,8 +34,8 @@ steps:
  # Update deployment file
  - script: |
     cd argocd-config/
-    git config --global user.name "${GIT_AUTHOR_NAME}"
-    git config --global user.email "${GIT_AUTHOR_EMAIL}"
+    git config --global user.name "Martin van Krieken"
+    git config --global user.email "mkrieken@gmail.com"
     git fetch
     git branch -v -a
     git checkout -b feature/update
