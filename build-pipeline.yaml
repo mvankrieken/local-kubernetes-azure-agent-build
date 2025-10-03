@@ -7,7 +7,7 @@ pool:
     - DEF_TYPE -equals build
 
 variables:
-  GitHash: ${BUILD_SOURCEVERSION:0:8}
+  GitHash: $(BUILD_SOURCEVERSION:0:8)
 
 steps:
 
