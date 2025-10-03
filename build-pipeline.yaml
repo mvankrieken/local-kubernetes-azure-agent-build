@@ -30,5 +30,4 @@ steps:
 
  # Update deployment file
  - script: |
-    cat argocd-config/azure-build-agent/deployment.yaml
-    yq '.spec.template.spec.containers[].image' argocd-config/azure-build-agent/deployment.yaml
+    yq ".spec.template.spec.containers[].image" argocd-config/azure-build-agent/deployment.yaml
