@@ -1,12 +1,5 @@
 trigger: none
 
-parameters:
-  - name: customer
-    displayName: Customer
-    type: string
-    values:
-      - koen
-
 stages:
 - stage: Deploy
   jobs:
@@ -17,8 +10,7 @@ stages:
     pool: 
       name: Local-kubernetes
       demands: 
-        - DEF_TYPE -equals deploy
-        - DEF_CUSTOMER_NAME -equals ${{ parameters.customer }}
+        - DEF_TYPE -equals build
     strategy:
         runOnce:
           deploy:
