@@ -35,4 +35,7 @@ steps:
      arguments: '--platform linux/x86_64'
 
  # Checkout config
- - checkout: configRepo   
+ - checkout: configRepo
+
+ # Update deployment file
+ - bash: yq -i '.spec.template.spec.containers[].image = "local/az-local-agent:$(GIT_SHORT_ID)"' deployment.yaml
