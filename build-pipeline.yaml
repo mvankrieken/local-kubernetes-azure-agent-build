@@ -20,9 +20,9 @@ workspace:
 steps:
  # Checkouts
  - checkout: self
-   path: workspace
+   path: '$(System.DefaultWorkingDirectory)/workspace'
  - checkout: configRepo
-   path: configRepo
+   path: '$(System.DefaultWorkingDirectory)/configRepo'
 
  - bash: "pwd"
    name: "CurrentDir"
