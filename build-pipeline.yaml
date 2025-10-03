@@ -7,8 +7,6 @@ pool:
     - DEF_TYPE -equals build
 
 steps:
- - bash: |
-    ls -l /var/run/docker.sock
 
  - task: Docker@2
    displayName: Build agent image
@@ -18,3 +16,4 @@ steps:
      Dockerfile: image/azure-agent.dockerfile
      buildContext: image
      tags: $(Build.BuildId)
+     arguments: '--platform linux/x86_64'
