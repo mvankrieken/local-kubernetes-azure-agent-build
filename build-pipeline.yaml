@@ -38,8 +38,8 @@ steps:
     git config --global user.name "Martin van Krieken"
     git fetch
     git branch -v -a
-    git switch main
+    git switch remotes/origin/main
     yq eval -i '.spec.template.spec.containers[].image = "local/az-local-agent:$(GIT_SHORT_ID)"' azure-build-agent/deployment.yaml
     git add .
     git commit -m "New version for azure-build-agent/deployment.yaml"
-    git push origin main
+    git push origin remotes/origin/main
