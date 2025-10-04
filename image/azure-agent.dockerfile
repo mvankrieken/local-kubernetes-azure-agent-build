@@ -10,9 +10,12 @@ ENV DEBIAN_FRONTEND="noninteractive"
 # Install defaults
 RUN apt update &&\
     apt upgrade -y &&\
-    apt install -y curl git jq libicu70 software-properties-common docker-buildx
+    apt install -y curl libicu70 software-properties-common
 
-# Install tools
+# Install tooling
+RUN add-apt-repository -y ppa:rmescandon/yq && apt update && apt -y install docker-buildx git jq yq 
+
+# Install python
 COPY ./build-tools.sh ./
 RUN chmod +x ./build-tools.sh
 RUN ./build-tools.sh
