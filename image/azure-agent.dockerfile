@@ -24,7 +24,7 @@ RUN ./build-tools.sh
 WORKDIR /azp/
 COPY ./start.sh ./
 RUN chmod +x ./start.sh
-COPY ./pypirc /home/root/.pypirc
+COPY ./pypirc /root/.pypirc
 
 # Another option is to run the agent as root.
 ENV AGENT_ALLOW_RUNASROOT="true"
