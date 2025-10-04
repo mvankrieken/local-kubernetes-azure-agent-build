@@ -49,6 +49,7 @@ steps:
     git branch -v -a
     git checkout -b main
     git branch -v -a
+    git pull
     yq eval -i '.spec.template.spec.containers[].image = "local/az-local-agent:$(GIT_SHORT_ID)"' azure-build-agent/deployment.yaml
     git add .
     git commit -m "New version for azure-build-agent/deployment.yaml"
